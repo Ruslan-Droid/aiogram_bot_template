@@ -5,13 +5,11 @@ This is a template for telegram bots written in python using the `aiogram` frame
 
 
 You can learn how to develop telegram bots using the `aiogram` framework in the following courses (in Russian):
-1. <a href="https://stepik.org/course/120924/">Телеграм-боты на Python и AIOgram</a>
-2. <a href="https://stepik.org/a/153850?utm_source=kmsint_github">Телеграм-боты на Python: продвинутый уровень</a>
 
 ## About the template
 
 ### Used technology
-* Python 3.12;
+* Python 3.14;
 * aiogram 3.x (Asynchronous Telegram Bot framework);
 * aiogram_dialog (GUI framework for telegram bot);
 * dynaconf (Configuration Management for Python);
@@ -19,9 +17,9 @@ You can learn how to develop telegram bots using the `aiogram` framework in the 
 * fluentogram (Internationalization tool in the Fluent paradigm);
 * Docker and Docker Compose (containerization);
 * PostgreSQL (database);
-* NATS (queue and FSM storage);
+* NATS (taskiq broker);
 * Redis (cache, taskiq result backend);
-* Alembic (database migrations with raw SQL).
+* Alembic (database migrations).
 
 ### Structure
 
