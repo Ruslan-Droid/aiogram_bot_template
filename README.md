@@ -156,33 +156,17 @@ git clone git@github.com:Ruslan-Droid/aiogram_bot_template.git
 
 5. Create a virtual environment in the project root and activate it.
 
-6. Install the required libraries in the virtual environment. With `pip`:
+6. Install the required libraries in the virtual environment. With `uv`:
 ```bash
-pip install .
+uv sync
 ```
-or if you use `poetry`:
-```bash
-poetry install --no-root
-```
-7. Write SQL code in the `upgrade` and `downgrade` functions to create a database schema. See example in file `alembic/versions/1541bb8a3f26_.py`.
 
-8. If required, create additional empty migrations with the command:
-```bash
-alembic revision
-```
-and fill them with SQL code.
-
-9. Apply database migrations using the command:
+7. Apply database migrations using the command:
 ```bash
 alembic upgrade head
 ```
 
-10. Run `create_stream.py` to create NATS stream for delayed messages service:
-```bash
-python3 -m nats_broker.migrations.create_stream
-```
-
-11. If you want to use the Taskiq broker for background tasks as well as the Taskiq scheduler, add your tasks to the `tasks.py` module and start the worker first:
+8. If you want to use the Taskiq broker for background tasks as well as the Taskiq scheduler, add your tasks to the `tasks.py` module and start the worker first:
 ```bash
 taskiq worker app.services.scheduler.taskiq_broker:broker -fsd
 ```
@@ -191,7 +175,7 @@ and then the scheduler:
 taskiq scheduler app.services.scheduler.taskiq_broker:scheduler
 ```
 
-12. Run `main.py` to check the functionality of the template.
+9. Run `main.py` to check the functionality of the template.
 
 13. You can fill the template with the functionality you need.
 
