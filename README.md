@@ -3,9 +3,6 @@
 
 This is a template for telegram bots written in python using the `aiogram` framework
 
-
-You can learn how to develop telegram bots using the `aiogram` framework in the following courses (in Russian):
-
 ## About the template
 
 ### Used technology
@@ -24,116 +21,7 @@ You can learn how to develop telegram bots using the `aiogram` framework in the 
 ### Structure
 
 ```
-📁 aiogram_bot_template/
-├── 📁 alembic/
-│   ├── 📁 versinos/
-│   │   ├── 1541bb8a3f26_.py
-│   │   └── b20e5643d3bd_.py
-│   ├── env.py
-│   └── script.py.mako
-├── 📁 app/
-│   ├── 📁 bot/
-│   │   ├── 📁 dialogs/
-│   │   │   ├── 📁 flows/
-│   │   │   │   ├── 📁 settings/
-│   │   │   │   │   ├── dialogs.py
-│   │   │   │   │   ├── getters.py
-│   │   │   │   │   ├── handlers.py
-│   │   │   │   │   ├── keyboards.py
-│   │   │   │   │   └── states.py
-│   │   │   │   ├── 📁 start/
-│   │   │   │   │   ├── dialogs.py
-│   │   │   │   │   ├── getters.py
-│   │   │   │   │   ├── handlers.py
-│   │   │   │   │   └── states.py
-│   │   │   │   └── __init__.py
-│   │   │   └── 📁 widgets/
-│   │   │       └── i18n.py
-│   │   ├── 📁 enums/
-│   │   │   ├── actions.py
-│   │   │   └── roles.py
-│   │   ├── 📁 filters/
-│   │   │   └── dialog_filters.py
-│   │   ├── 📁 handlers/
-│   │   │   ├── __init__.py
-│   │   │   ├── commands.py
-│   │   │   └── errors.py
-│   │   ├── 📁 i18n/
-│   │   │   └── translator_hub.py
-│   │   ├── 📁 keyboards/
-│   │   │   ├── links_kb.py
-│   │   │   └── menu_button.py
-│   │   ├── 📁 middlewares/
-│   │   │   ├── database.py
-│   │   │   ├── get_user.py
-│   │   │   ├── i18n.py
-│   │   │   └── shadow_ban.py
-│   │   ├── 📁 states/
-│   │   │   └── states.py
-│   │   ├── __init__.py
-│   │   └── bot.py
-│   ├── 📁 infrastructure/
-│   │   ├── 📁 cache/
-│   │   │   └── connect_to_redis.py
-│   │   ├── 📁 database/
-│   │   │   ├── 📁 connection/
-│   │   │   │   ├── base.py
-│   │   │   │   ├── connect_to_pg.py
-│   │   │   │   └── psycopg_connection.py
-│   │   │   ├── 📁 models/
-│   │   │   │   └── users.py
-│   │   │   ├── 📁 query/
-│   │   │   │   └── results.py
-│   │   │   ├── 📁 tables/
-│   │   │   │   ├── 📁 enums/
-│   │   │   │   │   ├── base.py
-│   │   │   │   │   └── users.py
-│   │   │   │   ├── base.py
-│   │   │   │   └── users.py
-│   │   │   ├── 📁 views/
-│   │   │   │   └── views.py
-│   │   │   └── db.py
-│   │   └── 📁 storage/
-│   │       ├── 📁 storage/
-│   │       │   └── nats_storage.py
-│   │       └── nats_connect.py
-│   └── 📁 services/
-│       ├── 📁 delay_service/
-│       │   ├── 📁 models/
-│       │   │   └── delayed_messages.py
-│       │   ├── consumer.py
-│       │   ├── publisher.py
-│       │   └── start_consumer.py
-│       └── 📁 scheduler/
-│           ├── taskiq_broker.py
-│           └── tasks.py
-├── 📁 config/
-│   ├── config.py
-│   └── settings.toml
-├── 📁 locales/
-│   ├── 📁 en/
-│   │   ├── 📁 LC_MESSAGES/
-│   │   │   └── txt.ftl
-│   │   └── 📁 static/
-│   └── 📁 ru/
-│       ├── 📁 LC_MESSAGES/
-│       │   └── txt.ftl
-│       └── 📁 static/
-├── 📁 nats_broker/
-│   ├── 📁 config/
-│   │   └── server.conf
-│   └── 📁 migrations/
-│       └── create_stream.py
-├── .env
-├── .env.example
-├── .gitignore
-├── alembic.ini
-├── docker-compose.example
-├── docker-compose.yml
-├── main.py
-├── pyproject.toml
-├── README.md
-└── uv.lock
+
 ```
 
 ## Installation
@@ -160,13 +48,17 @@ git clone git@github.com:Ruslan-Droid/aiogram_bot_template.git
 ```bash
 uv sync
 ```
+7. Create first migration 
+```bash
+alembic revision --autogenerate -m "initial migration"
+```
 
-7. Apply database migrations using the command:
+8. Apply database migrations using the command:
 ```bash
 alembic upgrade head
 ```
 
-8. If you want to use the Taskiq broker for background tasks as well as the Taskiq scheduler, add your tasks to the `tasks.py` module and start the worker first:
+9. If you want to use the Taskiq broker for background tasks as well as the Taskiq scheduler, add your tasks to the `tasks.py` module and start the worker first:
 ```bash
 taskiq worker app.services.scheduler.taskiq_broker:broker -fsd
 ```
@@ -175,9 +67,9 @@ and then the scheduler:
 taskiq scheduler app.services.scheduler.taskiq_broker:scheduler
 ```
 
-9. Run `main.py` to check the functionality of the template.
+10. Run `main.py` to check the functionality of the template.
 
-13. You can fill the template with the functionality you need.
+11. You can fill the template with the functionality you need.
 
 ## Developer tools
 
