@@ -21,7 +21,135 @@ This is a template for telegram bots written in python using the `aiogram` frame
 ### Structure
 
 ```
-
+📦 aiogram_bot_template/
+│   ⚙️ .env.example
+│   🚫 .gitignore
+│   ⚙️ .python-version
+│   ⚙️ alembic.ini
+│   🐳 docker-compose.example
+│   🐍 main.py
+│   📦 pyproject.toml
+│   📖 README.md
+│   📦 uv.lock
+│           
+├── 📂 alembic
+│   │   🐍 env.py
+│   │   📝 script.py.mako
+│   │   
+│   ├── 📂 versions
+│           
+├── 📂 app
+│   ├── 📂 bot
+│   │   │   🐍 bot.py
+│   │   │   🐍 __init__.py
+│   │   │   
+│   │   ├── 📂 dialogs
+│   │   │   ├── 📂 flows
+│   │   │   │   │   🐍 __init__.py
+│   │   │   │   │   
+│   │   │   │   ├── 📂 settings
+│   │   │   │   │   │   🐍 dialogs.py
+│   │   │   │   │   │   🐍 getters.py
+│   │   │   │   │   │   🐍 handlers.py
+│   │   │   │   │   │   🐍 keyboards.py
+│   │   │   │   │   │   🐍 states.py
+│   │   │   │   │           
+│   │   │   │   ├── 📂 start
+│   │   │   │   │   │   🐍 dialogs.py
+│   │   │   │   │   │   🐍 getters.py
+│   │   │   │   │   │   🐍 handlers.py
+│   │   │   │   │   │   🐍 states.py
+│   │   │   │           
+│   │   │   └── 📂 widgets
+│   │   │       │   🐍 i18n.py
+│   │   │               
+│   │   ├── 📂 enums
+│   │   │   │   🐍 group_data.py
+│   │   │           
+│   │   ├── 📂 filters
+│   │   │   │   🐍 chat_type_filters.py
+│   │   │   │   🐍 dialog_filters.py
+│   │   │           
+│   │   ├── 📂 handlers
+│   │   │   │   🐍 commands.py
+│   │   │   │   🐍 errors.py
+│   │   │   │   🐍 groups.py
+│   │   │   │   🐍 user_statuses.py
+│   │   │   │   🐍 __init__.py
+│   │   │           
+│   │   ├── 📂 i18n
+│   │   │   │   🐍 translator_hub.py
+│   │   │           
+│   │   ├── 📂 keyboards
+│   │   │   │   🐍 inline_keyboards.py
+│   │   │   │   🐍 menu_button.py
+│   │   │   │   
+│   │   │   └── 📂 __pycache__
+│   │   │           🐍 inline_keyboards.cpython-314.pyc
+│   │   │           🐍 menu_button.cpython-314.pyc
+│   │   │           
+│   │   ├── 📂 middlewares
+│   │   │   │   🐍 database.py
+│   │   │   │   🐍 get_group.py
+│   │   │   │   🐍 get_user.py
+│   │   │   │   🐍 i18n.py
+│   │   │   │   🐍 shadow_ban.py
+│   │   │   │   
+│   │   │   └── 📂 __pycache__
+│   │   │           🐍 database.cpython-314.pyc
+│   │   │           🐍 get_group.cpython-314.pyc
+│   │   │           🐍 get_user.cpython-314.pyc
+│   │   │           🐍 i18n.cpython-314.pyc
+│   │   │           🐍 shadow_ban.cpython-314.pyc
+│   │   │           
+│   │   ├── 📂 states
+│   │   │       🐍 states.py
+│   │   │       
+│   │   ├── 📂 utils
+│   │   │   │   🐍 group_utils.py
+│   │           
+│   ├── 📂 infrastructure
+│   │   ├── 📂 cache
+│   │   │   │   🐍 connect_to_redis.py
+│   │   │   │   🐍 __init__.py
+│   │   │           
+│   │   └── 📂 database
+│   │       │   🐍 db.py
+│   │       │   
+│   │       ├── 📂 enums
+│   │       │   │   🐍 user_roles.py
+│   │       │           
+│   │       ├── 📂 models
+│   │       │   │   🐍 base_model.py
+│   │       │   │   🐍 group.py
+│   │       │   │   🐍 user.py
+│   │       │   │   🐍 __Init__.py
+│   │       │           
+│   │       ├── 📂 query
+│   │       │   │   🐍 group_queries.py
+│   │       │   │   🐍 user_queries.py
+│   │               
+│   └── 📂 services
+│       └── 📂 scheduler
+│           │   🐍 taskiq_broker.py
+│           │   🐍 tasks.py
+│                   
+├── 📂 config
+│   │   🐍 config.py
+│   │   ⚙️ settings.toml
+│           
+├── 📂 locales
+│   ├── 📂 en
+│   │   └── 📂 LC_MESSAGES
+│   │           📝 txt.ftl
+│   │           
+│   └── 📂 ru
+│       └── 📂 LC_MESSAGES
+│               📝 txt.ftl
+│               
+└── 📂 nats_broker
+    └── 📂 config
+            ⚙️ server.conf
 ```
 
 ## Installation
