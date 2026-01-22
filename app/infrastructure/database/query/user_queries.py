@@ -65,8 +65,9 @@ class UserRepository:
         try:
             # Execute the upsert
             result = await self.session.execute(on_conflict_stmt)
-            user = result.scalar_one()
+            user = result.scalar_one_or_none()
             logger.info("Created/Updated user with telegram id: %s", telegram_id)
+            await self.session.commit()
             return user
 
         except Exception as e:

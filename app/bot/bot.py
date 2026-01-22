@@ -9,6 +9,7 @@ from aiogram.filters import ExceptionTypeFilter
 from aiogram.fsm.storage.base import DefaultKeyBuilder
 from aiogram.fsm.storage.redis import RedisStorage
 from aiogram.types import ChatAdministratorRights
+from aiogram.utils.i18n import SimpleI18nMiddleware
 
 from aiogram_dialog import setup_dialogs
 from aiogram_dialog.api.entities import DIALOG_EVENT_NAME
@@ -98,35 +99,12 @@ async def main():
         ExceptionTypeFilter(UnknownState),
     )
 
-    # it needs to handle only filtered updates
-    logger.info("Setting up middlewares for private routers")
-    private_middlewares = [
-        DbSessionMiddleware(async_session_maker),
-        GetUserMiddleware(),
-        ShadowBanMiddleware(),
-        TranslatorRunnerMiddleware(),
-    ]
-
-    logger.info("Including private chat middlewares")
-    for middleware in private_middlewares:
-        commands_router.message.middleware(middleware)
-        commands_router.callback_query.middleware(middleware)
-        user_status_router.my_chat_member.middleware(middleware)
-
-        for dialog in dialogs:
-            dialog.message.middleware(middleware)
-            dialog.callback_query.middleware(middleware)
-
-    logger.info("Including groups middlewares")
-    groups_router.chat_member.middleware(DbSessionMiddleware(async_session_maker))
-    groups_router.chat_member.middleware(GetUserMiddleware())
-    groups_router.chat_member.middleware(GetGroupMiddleware())
-    groups_router.chat_member.middleware(TranslatorRunnerMiddleware())
-
-    groups_router.my_chat_member.middleware(DbSessionMiddleware(async_session_maker))
-    groups_router.my_chat_member.middleware(GetUserMiddleware())
-    groups_router.my_chat_member.middleware(GetGroupMiddleware())
-    groups_router.my_chat_member.middleware(TranslatorRunnerMiddleware())
+    logger.info("Including  middlewares")
+    dp.update.outer_middleware(DbSessionMiddleware(async_session_maker))
+    dp.update.outer_middleware(GetUserMiddleware())
+    dp.update.outer_middleware(GetGroupMiddleware())
+    dp.update.outer_middleware(ShadowBanMiddleware())
+    dp.update.outer_middleware(TranslatorRunnerMiddleware())
 
     logger.info("Including routers")
     dp.include_routers(*routers)

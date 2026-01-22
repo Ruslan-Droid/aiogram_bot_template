@@ -51,6 +51,7 @@ async def update_user_lang(
             type=BotCommandScopeType.CHAT, chat_id=callback.from_user.id
         ),
     )
+    await dialog_manager.done()
 
 
 async def cancel_set_lang(
