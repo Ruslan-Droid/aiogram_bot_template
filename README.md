@@ -22,16 +22,7 @@ This is a template for telegram bots written in python using the `aiogram` frame
 
 ```
 📦 aiogram_bot_template/
-│   ⚙️ .env.example
-│   🚫 .gitignore
-│   ⚙️ .python-version
-│   ⚙️ alembic.ini
-│   🐳 docker-compose.example
-│   🐍 main.py
-│   📦 pyproject.toml
-│   📖 README.md
-│   📦 uv.lock
-│           
+│ 
 ├── 📂 alembic
 │   │   🐍 env.py
 │   │   📝 script.py.mako
@@ -137,8 +128,19 @@ This is a template for telegram bots written in python using the `aiogram` frame
 │               📝 txt.ftl
 │               
 └── 📂 nats_broker
-    └── 📂 config
-            ⚙️ server.conf
+│    └── 📂 config
+│            ⚙️ server.conf
+│ 
+│   ⚙️ .env.example
+│   🚫 .gitignore
+│   ⚙️ .python-version
+│   ⚙️ alembic.ini
+│   🐳 docker-compose.example
+│   🐍 main.py
+│   📦 pyproject.toml
+│   📖 README.md
+│   📦 uv.lock
+│           
 ```
 
 ## Installation
